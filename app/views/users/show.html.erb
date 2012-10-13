@@ -1,0 +1,14 @@
+<ul>
+<% @user.all_repositories.each do |repository| %>
+  <li>
+    <% if repository.new_record? %>
+      <%= repository.slug %>
+      <%= link_to 'add!', repository_path(repository), :method => :post %>
+    <% else %>
+      <%= link_to repository.slug, repository_path(repository) %>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'Back', root_path %>

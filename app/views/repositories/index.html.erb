@@ -1,0 +1,9 @@
+<h1>Repositories</h1>
+
+<ul>
+<% @repositories.each do |repositories| %>
+  <li><%= link_to repositories.slug, repositories %></li>
+<% end %>
+</ul>
+
+<%= link_to 'Add more', user_path %>
