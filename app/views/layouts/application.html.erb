@@ -8,7 +8,16 @@
 </head>
 <body>
 
-<%= yield %>
+  <% if user_signed_in? %>
+    <%= link_to 'Sign Out', sign_out_path %>
+  <% else %>
+    <%= link_to 'Sign In', user_omniauth_authorize_path(:github) %>
+  <% end %>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <%= yield %>
 
 </body>
 </html>
