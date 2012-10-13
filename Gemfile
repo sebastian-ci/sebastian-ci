@@ -2,16 +2,27 @@ source :rubygems
 
 gem 'rails', '~> 3.2.8'
 
-
 ## Model
 gem 'sqlite3'
+gem 'devise'
+gem 'omniauth-github'
+gem 'omniauth-oauth2'
+gem 'gh', git: 'git://github.com/rkh/gh'
+
 
 ## Controller
-gem 'ffi'
-gem 'vagrant'
+
+## Other
+gem 'lograge'
+
+## Deployment
+group :production do
+  gem 'unicorn'
+end
 
 ## Chef
-group :chef do
+group :worker do
+  gem 'vagrant'
   gem 'librarian'
 end
 
@@ -34,9 +45,6 @@ gem 'jquery-rails'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
