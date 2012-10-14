@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class='span10'>
+    <div class='span12'>
       <div class="hero-unit">
         <h1>Sebastian CI</h1>
 
@@ -10,35 +10,36 @@
           <%= link_to user_omniauth_authorize_path(:github), :class => 'btn btn-primary btn-success' do %>
             Sign In with Github
           <% end %>
+          <%= link_to 'https://github.com/sebastian-ci/sebastian-ci', :class => 'btn btn-primary btn-info' do %>
+            Source Code
+          <% end %>
         </p>
+
+        <div id="myCarousel" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="item active">
+              <%= image_tag 'github.png' %>
+              <div class="carousel-caption">
+                <h4>Complete GitHub integration</h4>
+              </div>
+            </div>
+            <div class="item">
+              <%= image_tag 'vagrant.png' %>
+              <div class="carousel-caption">
+                <h4>Built on top of <strong>Vagrant</strong> for a total build isolation</h4>
+              </div>
+            </div>
+            <div class="item">
+              <%= image_tag 'travis.png' %>
+              <div class="carousel-caption">
+                <h4>Integrates with <i>travis.yml</i></h4>
+              </div>
+            </div>
+          </div>
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class='row'>
-    <div id="myCarousel" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="item active">
-          <%= image_tag 'github.png' %>
-          <div class="carousel-caption">
-            <h4>Complete GitHub integration</h4>
-          </div>
-        </div>
-        <div class="item">
-          <%= image_tag 'vagrant.png' %>
-          <div class="carousel-caption">
-            <h4>Built on top of <strong>Vagrant</strong></h4>
-            <p>For a total build isolation.</p>
-          </div>
-        </div>
-        <div class="item">
-          <%= image_tag 'travis.png' %>
-          <div class="carousel-caption">
-            <h4>Integrates with <i>travis.yml</i></h4>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
     </div>
   </div>
 </div>
