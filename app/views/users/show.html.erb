@@ -4,7 +4,7 @@
   <tr>
     <% if repository.new_record? %>
       <td>
-        <%= image_tag 'lock.png', :class => 'mega-icon-private-repo' %>
+        <%= image_tag 'unlock.png', :class => 'repo-type' %>
         <%= repository.slug %>
       </td>
       <td>
@@ -14,7 +14,7 @@
       </td>
     <% else %>
       <td colspan=2>
-        <%= image_tag 'lock.png', :class => 'mega-icon-private-repo' %>
+        <%= image_tag 'unlock.png', :class => 'repo-type' %>
         <%= link_to repository.slug, repository_path(repository) %>
       </td>
     <% end %>

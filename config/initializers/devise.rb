@@ -10,7 +10,10 @@ Devise.setup do |config|
   config.reset_password_within = 0
   config.case_insensitive_keys = []
 
-  config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user,repo"
+  # config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user,repo"
+
+  # for demo purposes, let's make it public only
+  config.omniauth :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET']
 
   config.warden do |manager|
     manager.failure_app = Sebastian::FailureApp

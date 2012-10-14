@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
 
   def all_repositories
     with_github do
-      GH['user/repos?type=private'].map do |payload|
+      # GH['user/repos?type=private'].map do |payload|
+      GH['user/repos'].map do |payload|
         repository   = Repository.by_slug(payload['full_name'])
         repository ||= Repository.new({
           :name         => payload['name'],
