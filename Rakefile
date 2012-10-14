@@ -5,3 +5,12 @@
 require File.expand_path('../config/application', __FILE__)
 
 Sebastian::Application.load_tasks
+
+
+
+
+require 'chef'
+
+TOPDIR = File.expand_path(File.join(File.dirname(__FILE__), ".."))
+$vcs = :git
+load 'chef/tasks/chef_repo.rake'

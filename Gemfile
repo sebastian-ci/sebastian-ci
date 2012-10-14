@@ -22,6 +22,7 @@ end
 
 ## Chef
 group :worker do
+  gem 'chef'
   gem 'vagrant'
   gem 'librarian'
 end
