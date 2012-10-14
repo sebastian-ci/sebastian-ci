@@ -1,23 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Sebastian</title>
+  <title>Sebastian CI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-  <% if user_signed_in? %>
-    <%= link_to 'Sign Out', sign_out_path %>
-  <% else %>
-    <%= link_to 'Sign In', user_omniauth_authorize_path(:github) %>
+  <%= render 'navbar' %>
+
+  <% if notice %>
+    <div class="alert alert-info">
+      <a href="#" class="close" data-dismiss="alert">×</a>
+      <%= notice %>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div class="alert alert-error">
+      <a href="#" class="close" data-dismiss="alert">×</a>
+      <strong>Error!</strong> <%= alert %>
+    </div>
   <% end %>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% if user_signed_in? %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class='span3'>
+          <%= render 'sidebar' %>
+        </div>
+        <div class='span9'>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <%= yield %>
+  <% end %>
 
-  <%= yield %>
+  <%= javascript_include_tag "application" %>
 
   <% if Rails.env.production? %>
   <script type="text/javascript">
@@ -38,6 +59,5 @@
     })(window);
   </script>
   <% end %>
-
 </body>
 </html>

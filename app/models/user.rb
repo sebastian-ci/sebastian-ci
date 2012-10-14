@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     with_github do
       GH['user/repos?type=private'].map do |payload|
         repository   = Repository.by_slug(payload['full_name'])
-        repository ||= repositories.build({
+        repository ||= Repository.new({
           :name         => payload['name'],
           :url          => payload['_links']['self']['href'],
           :description  => payload['description'],
@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
       repository   = Repository.by_slug(slug)
       repository ||= begin
         payload = GH["repos/#{slug}"]
+        logger.info payload.inspect
         repositories.create({
           :name         => payload['name'],
           :url          => payload['_links']['html']['href'],

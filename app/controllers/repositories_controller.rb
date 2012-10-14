@@ -1,6 +1,12 @@
 class RepositoriesController < PrivateController
   def index
-    @repositories = current_user.repositories
+    @repository = current_user.repositories.first
+
+    if @repository
+      redirect_to repository_path(@repository)
+    else
+      redirect_to user_path
+    end
   end
 
   def create
@@ -18,11 +24,11 @@ class RepositoriesController < PrivateController
 
     @repository = repository_from_path
 
-    result = case @repository.last_build_status
-    when 0
-      'red'
-    when 1
+    result = case Build::RESULT[@repository.builds.last.try(:result)]
+    when :ok
       'green'
+    when :fail
+      'red'
     else
       'grey'
     end

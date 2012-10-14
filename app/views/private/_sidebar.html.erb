@@ -1,0 +1,17 @@
+<ul class="nav nav-tabs nav-stacked">
+  <% current_user.repositories.each do |repository| %>
+    <li>
+      <%= link_to repository_path(repository) do %>
+        <%= build_status_image(repository.builds.last, :class => 'build-result-small') %>
+        <%= repository.slug %>
+        <i class="icon-chevron-right pull-right"></i>
+      <% end %>
+    </li>
+  <% end %>
+  <li class='alert-info'>
+    <%= link_to user_path do %>
+      <i class="icon-plus"></i>
+      Add more
+    <% end %>
+  </li>
+</ul>

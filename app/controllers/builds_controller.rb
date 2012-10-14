@@ -6,7 +6,13 @@ class BuildsController < PrivateController
   end
 
   def show
-    @build = @repository.builds.find(params[:id])
+    @build = @repository.builds
+
+    @build = if params[:id]
+      @build.find(params[:id])
+    else
+      @build.last
+    end
   end
 
   private

@@ -11,6 +11,8 @@ class Repository < ActiveRecord::Base
   validates :name,       :presence => true, :uniqueness => { :scope => :owner_name }
   validates :owner_name, :presence => true
 
+  after_create :start_build
+
   class << self
     def recent
       limit(25)
@@ -27,5 +29,11 @@ class Repository < ActiveRecord::Base
 
   def source_url
     "git@github.com:#{slug}.git"
+  end
+
+  private
+
+  def start_build
+    builds.create
   end
 end

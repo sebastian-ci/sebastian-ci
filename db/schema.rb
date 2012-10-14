@@ -11,39 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013173224) do
+ActiveRecord::Schema.define(:version => 20121014180014) do
 
   create_table "builds", :force => true do |t|
     t.integer  "repository_id"
-    t.integer  "status"
     t.datetime "started_at"
     t.datetime "finished_at"
     t.string   "state"
     t.integer  "duration"
-    t.integer  "result"
-    t.integer  "previous_result"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "result",        :default => 0
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "repositories", :force => true do |t|
     t.string   "name"
     t.string   "url"
-    t.integer  "last_build_id"
-    t.string   "last_build_number"
-    t.integer  "last_build_status"
-    t.datetime "last_build_started_at"
-    t.datetime "last_build_finished_at"
-    t.integer  "last_build_result"
     t.text     "description"
     t.integer  "owner_id"
     t.string   "owner_type"
     t.string   "owner_name"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "repositories", ["last_build_started_at"], :name => "index_repositories_on_last_build_started_at"
   add_index "repositories", ["owner_name", "name"], :name => "index_repositories_on_owner_name_and_name"
 
   create_table "users", :force => true do |t|

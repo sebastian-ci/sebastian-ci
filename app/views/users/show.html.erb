@@ -1,14 +1,22 @@
-<ul>
-<% @user.all_repositories.each do |repository| %>
-  <li>
-    <% if repository.new_record? %>
-      <%= repository.slug %>
-      <%= link_to 'add!', repository_path(repository), :method => :post %>
-    <% else %>
-      <%= link_to repository.slug, repository_path(repository) %>
-    <% end %>
-  </li>
-<% end %>
-</ul>
+<table class="table">
 
-<%= link_to 'Back', root_path %>
+<% @user.all_repositories.each do |repository| %>
+  <tr>
+    <% if repository.new_record? %>
+      <td>
+        <%= image_tag 'lock.png', :class => 'mega-icon-private-repo' %>
+        <%= repository.slug %>
+      </td>
+      <td>
+        <%= link_to repository_path(repository), :method => :post, :class => "btn btn-small btn-success" do %>
+          <i class="icon-plus"></i>
+        <% end %>
+      </td>
+    <% else %>
+      <td colspan=2>
+        <%= image_tag 'lock.png', :class => 'mega-icon-private-repo' %>
+        <%= link_to repository.slug, repository_path(repository) %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>

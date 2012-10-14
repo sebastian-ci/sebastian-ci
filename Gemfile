@@ -4,13 +4,13 @@ gem 'rails', '~> 3.2.8'
 
 ## Model
 gem 'sqlite3'
+gem 'gh', git: 'git://github.com/rkh/gh'
+gem 'simple_states'
+
+## Controller
 gem 'devise'
 gem 'omniauth-github'
 gem 'omniauth-oauth2'
-gem 'gh', git: 'git://github.com/rkh/gh'
-
-
-## Controller
 
 ## Other
 gem 'lograge'
@@ -40,15 +40,3 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'

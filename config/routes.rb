@@ -14,8 +14,10 @@ Sebastian::Application.routes.draw do
   resource :user, :only => :show
 
   constraints :owner_name => /[^\/]+/, :name => /[^\/]+/ do
-    get  ':owner_name/:name',             :to => 'repositories#show',   :as => :repository
+    get  ':owner_name/:name',             :to => 'builds#show',   :as => :repository
     post ':owner_name/:name',             :to => 'repositories#create'
+
+    # status image
     get  ':owner_name/:name/status',      :to => 'repositories#status'
 
     get  ':owner_name/:name/builds/:id',  :to => 'builds#show', :as => :build
