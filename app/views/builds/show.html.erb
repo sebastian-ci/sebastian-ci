@@ -1,3 +1,29 @@
 <h2><%= build_status_image(@build, :class => 'build-result-large') %> <%= @repository.slug %></h2>
 
-
+<table class='table'>
+  <tr>
+    <td>
+      Author:
+      <%= link_to "https://github.com/#{@build.data['commit']['author']['login']}", :target => '_blank' do %>
+        <%= @build.data['commit']['author']['login'] %>
+      <% end %>
+    </td>
+    <td>+<%= @build.data['commit']['stats']['additions'] %>/-<%= @build.data['commit']['stats']['deletions'] %></td>
+  </tr>
+  <tr>
+    <td>
+      Commiter:
+      <%= link_to "https://github.com/#{@build.data['commit']['committer']['login']}", :target => '_blank' do %>
+        <%= @build.data['commit']['committer']['login'] %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to "https://github.com/#{@repository.slug}/commit/#{@build.data['commit']['sha']}", :target => '_blank' do %>
+        <%= @build.data['commit']['sha'][0..10] %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=2><%= @build.data['commit']['commit']['message'] %></td>
+  </tr>
+</table>

@@ -1,6 +1,8 @@
 class Build < ActiveRecord::Base
   RESULT = [:unknown, :ok, :failed]
 
+  belongs_to :repository
+
   include SimpleStates
 
   states :created, :started, :finished
@@ -35,4 +37,7 @@ class Build < ActiveRecord::Base
     logger.info "SEND EMAIL HERE!!!"
   end
 
+  def data
+    @data ||= GH["repos/#{repository.slug}/branches/master"]
+  end
 end
