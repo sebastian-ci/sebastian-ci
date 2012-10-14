@@ -30,7 +30,7 @@
   },
   "database_master_role": ["sebastian"],
   "revision": {
-    "_default": "0.0.1"
+    "_default": "0.0.2"
   },
   "owner": "root",
   "group": "root",
