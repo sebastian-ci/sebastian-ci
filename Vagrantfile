@@ -6,10 +6,9 @@ Vagrant::Config.run do |config|
     chef.roles_path = 'chef/roles'
     chef.data_bags_path = 'chef/data_bags'
 
-    chef.add_role 'sebastian'
-    chef.add_role 'sebastian_run_migrations'
+    chef.add_role 'worker'
 
     # You may also specify custom JSON attributes:
-    chef.json = { :mysql_password => "foo" }
+    # chef.json = { :mysql_password => "foo" }
   end
 end

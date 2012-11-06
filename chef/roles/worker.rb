@@ -4,11 +4,27 @@ description "Sebastian CI Worker"
 
 run_list(
   "recipe[apt]",
+  "recipe[build-essential]",
   "recipe[git]",
-  "recipe[rbenv]",
-  "recipe[application]"
+  "recipe[percona-install]",
+  "recipe[percona-install::server]",
+  "recipe[redisio::install]",
+  "recipe[rvm::system]",
+  "recipe[rvm::gem_package]",
+  "recipe[rvm::vagrant]"
 )
 
-override_attributes(
-  'unicorn' => { 'port' => '80', 'worker_timeout' => 300 }
+default_attributes(
+  'rvm' => {
+    'default_ruby'  => 'ruby-1.9.3-p286',
+    'rubies'        => ['ruby-1.9.3-p286'],
+
+    'version'       => '1.16.16', # rvm 1.16.17 is broken - https://github.com/fnichol/chef-rvm/issues/133
+    'branch'        => 'none'
+  },
+  'authorization' => {
+    'sudo' => {
+      'users' => ['vagrant']
+    }
+  }
 )

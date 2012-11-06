@@ -4,6 +4,8 @@
 site 'http://community.opscode.com/api/v1'
 
 cookbook 'apt'
+cookbook 'build-essential'
 cookbook 'git'
-cookbook 'chef-client'
-cookbook 'application'
+cookbook 'percona-install'
+cookbook 'redisio'
+cookbook 'rvm', :git => 'git://github.com/fnichol/chef-rvm.git', :ref => 'v0.9.0'
