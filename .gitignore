@@ -4,4 +4,5 @@
 /tmp
 /db/*.sqlite3
 /.chef
-chef/cookbooks
+/chef/cookbooks
+/.vagrant
